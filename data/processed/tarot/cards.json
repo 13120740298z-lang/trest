@@ -1,0 +1,68 @@
+[
+  {
+    "id": "major_00_the_fool",
+    "name": "The Fool",
+    "arcana": "major",
+    "suit": null,
+    "number": "0",
+    "upright_keywords": ["beginnings", "freedom", "trust"],
+    "reversed_keywords": ["reckless", "naivety", "risk"],
+    "meaning_upright": "A fresh start, stepping into the unknown with curiosity and trust.",
+    "meaning_reversed": "Hesitation, impulsiveness, or ignoring obvious risks."
+  },
+  {
+    "id": "major_01_the_magician",
+    "name": "The Magician",
+    "arcana": "major",
+    "suit": null,
+    "number": "1",
+    "upright_keywords": ["initiative", "skill", "manifestation"],
+    "reversed_keywords": ["scattered", "manipulation", "doubt"],
+    "meaning_upright": "You have the tools and momentum to turn intention into action.",
+    "meaning_reversed": "Energy is unfocused, or you doubt your ability to follow through."
+  },
+  {
+    "id": "major_02_the_high_priestess",
+    "name": "The High Priestess",
+    "arcana": "major",
+    "suit": null,
+    "number": "2",
+    "upright_keywords": ["intuition", "inner voice", "mystery"],
+    "reversed_keywords": ["blocked intuition", "secrets", "confusion"],
+    "meaning_upright": "Slow down and listen to what you already know beneath the surface.",
+    "meaning_reversed": "You may be ignoring inner signals or missing key information."
+  },
+  {
+    "id": "minor_cups_ace",
+    "name": "Ace of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "ace",
+    "upright_keywords": ["emotional renewal", "love", "openness"],
+    "reversed_keywords": ["emotional blockage", "withholding", "numbness"],
+    "meaning_upright": "A new emotional chapter; openness, connection, and compassion.",
+    "meaning_reversed": "Feelings are present but held back; give yourself safe space to feel."
+  },
+  {
+    "id": "minor_cups_two",
+    "name": "Two of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "2",
+    "upright_keywords": ["partnership", "mutuality", "alignment"],
+    "reversed_keywords": ["imbalance", "miscommunication", "disharmony"],
+    "meaning_upright": "Mutual support and shared values; a balanced partnership.",
+    "meaning_reversed": "A mismatch of expectations; clarify boundaries and needs."
+  },
+  {
+    "id": "minor_swords_three",
+    "name": "Three of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "3",
+    "upright_keywords": ["truth", "heartbreak", "clarity"],
+    "reversed_keywords": ["healing", "avoidance", "release"],
+    "meaning_upright": "Painful clarity; acknowledging a truth that hurts is the first step to healing.",
+    "meaning_reversed": "Recovery and release; allow grief to move through you rather than staying stuck."
+  }
+]

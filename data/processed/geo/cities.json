@@ -1,0 +1,12 @@
+[
+  {"name":"北京","name_en":"Beijing","country":"CN","admin":"Beijing","lat":39.9042,"lon":116.4074,"timezone":"Asia/Shanghai"},
+  {"name":"上海","name_en":"Shanghai","country":"CN","admin":"Shanghai","lat":31.2304,"lon":121.4737,"timezone":"Asia/Shanghai"},
+  {"name":"广州","name_en":"Guangzhou","country":"CN","admin":"Guangdong","lat":23.1291,"lon":113.2644,"timezone":"Asia/Shanghai"},
+  {"name":"深圳","name_en":"Shenzhen","country":"CN","admin":"Guangdong","lat":22.5431,"lon":114.0579,"timezone":"Asia/Shanghai"},
+  {"name":"成都","name_en":"Chengdu","country":"CN","admin":"Sichuan","lat":30.5728,"lon":104.0668,"timezone":"Asia/Shanghai"},
+  {"name":"杭州","name_en":"Hangzhou","country":"CN","admin":"Zhejiang","lat":30.2741,"lon":120.1551,"timezone":"Asia/Shanghai"},
+  {"name":"武汉","name_en":"Wuhan","country":"CN","admin":"Hubei","lat":30.5928,"lon":114.3055,"timezone":"Asia/Shanghai"},
+  {"name":"西安","name_en":"Xi'an","country":"CN","admin":"Shaanxi","lat":34.3416,"lon":108.9398,"timezone":"Asia/Shanghai"},
+  {"name":"重庆","name_en":"Chongqing","country":"CN","admin":"Chongqing","lat":29.5630,"lon":106.5516,"timezone":"Asia/Shanghai"},
+  {"name":"南京","name_en":"Nanjing","country":"CN","admin":"Jiangsu","lat":32.0603,"lon":118.7969,"timezone":"Asia/Shanghai"}
+]
