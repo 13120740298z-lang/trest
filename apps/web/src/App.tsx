@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 
 type SpreadType = 'single' | 'three'
@@ -77,9 +77,10 @@ function App() {
   const [birthTime, setBirthTime] = useState('12:00')
   const [birthCity, setBirthCity] = useState('北京')
   const [gender, setGender] = useState('')
-  const [domain, setDomain] = useState('自我成长')
+  const [profileDomain, setProfileDomain] = useState('自我成长')
   const [mbti, setMbti] = useState('')
   const [question, setQuestion] = useState('')
+  const [tarotDomain, setTarotDomain] = useState('爱情')
   const [spreadType, setSpreadType] = useState<SpreadType>('three')
   const [includeReversed, setIncludeReversed] = useState(true)
   const [deck, setDeck] = useState<TarotDeckResponse | null>(null)
@@ -107,7 +108,7 @@ function App() {
           birth_time: birthTime,
           birth_city: birthCity,
           gender: gender || null,
-          domain: domain || null,
+          domain: profileDomain || null,
           mbti: mbti || null,
         }),
       })
@@ -139,7 +140,7 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           question,
-          domain: domain || null,
+          domain: tarotDomain || null,
           spread: { type: spreadType, include_reversed: includeReversed, seed: null },
         }),
       })
@@ -185,14 +186,28 @@ function App() {
 
   function togglePick(i: number) {
     if (!deck || tarotResult) return
-    const exists = picks.includes(i)
-    const required = deck.required_picks
-    let next = exists ? picks.filter((x) => x !== i) : [...picks, i]
-    if (next.length > required) return
-    setPicks(next)
-    if (next.length === required) {
-      void revealDeck(next)
-    }
+    setPicks((prev) => {
+      const exists = prev.includes(i)
+      const required = deck.required_picks
+      const next = exists ? prev.filter((x) => x !== i) : [...prev, i]
+      if (next.length > required) return prev
+      return next
+    })
+  }
+
+  useEffect(() => {
+    if (!deck) return
+    if (tarotResult) return
+    if (loading) return
+    if (picks.length !== deck.required_picks) return
+    void revealDeck(picks)
+  }, [deck, loading, picks, tarotResult])
+
+  function resetTarot() {
+    setError(null)
+    setDeck(null)
+    setPicks([])
+    setTarotResult(null)
   }
 
   return (
@@ -207,6 +222,7 @@ function App() {
             onClick={() => {
               setMode('profile')
               setError(null)
+              resetTarot()
             }}
           >
             星盘画像
@@ -217,6 +233,7 @@ function App() {
             onClick={() => {
               setMode('tarot')
               setError(null)
+              setResult(null)
             }}
           >
             塔罗细化
@@ -248,7 +265,11 @@ function App() {
               </label>
               <label>
                 <span>关注领域</span>
-                <input value={domain} onChange={(e) => setDomain(e.target.value)} placeholder="爱情 / 事业 / 自我成长" />
+                <input
+                  value={profileDomain}
+                  onChange={(e) => setProfileDomain(e.target.value)}
+                  placeholder="爱情 / 事业 / 自我成长"
+                />
               </label>
               <label>
                 <span>MBTI（可选）</span>
@@ -283,7 +304,11 @@ function App() {
               <div className="grid">
                 <label>
                   <span>关注领域</span>
-                  <input value={domain} onChange={(e) => setDomain(e.target.value)} placeholder="爱情 / 事业 / 自我成长" />
+                  <input
+                    value={tarotDomain}
+                    onChange={(e) => setTarotDomain(e.target.value)}
+                    placeholder="爱情 / 事业 / 自我成长"
+                  />
                 </label>
                 <label>
                   <span>牌阵</span>
@@ -511,6 +536,14 @@ function App() {
                         <li key={h}>{h}</li>
                       ))}
                     </ul>
+                    <div className="inlineActions">
+                      <button type="button" className="linkBtn" onClick={() => setTab('params')}>
+                        查看星盘参数
+                      </button>
+                      <button type="button" className="linkBtn" onClick={() => setTab('stats')}>
+                        查看属性统计
+                      </button>
+                    </div>
                     {result.astrology.interpretation.map((s) => (
                       <div key={s.title} className="section">
                         <h4>{s.title}</h4>
@@ -558,6 +591,11 @@ function App() {
 
           {mode === 'tarot' && tarotResult ? (
             <div className="report">
+              <div className="inlineActions">
+                <button type="button" className="linkBtn" onClick={resetTarot} disabled={loading}>
+                  再抽一次
+                </button>
+              </div>
               <section className="block">
                 <h3>塔罗解读</h3>
                 <div className="cards">
