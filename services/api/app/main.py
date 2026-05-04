@@ -23,8 +23,8 @@ app = FastAPI(title="Personality MVP API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -68,4 +68,3 @@ def analyze(req: AnalyzeRequest) -> AnalyzeResponse:
         action_guide=build_action_guide(domain=req.domain),
         followup_questions=build_followups(domain=req.domain),
     )
-
