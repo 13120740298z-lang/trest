@@ -54,11 +54,21 @@ class AnalyzeRequest(BaseModel):
     spread: SpreadConfig = Field(default_factory=SpreadConfig)
 
 
+class ProfileRequest(BaseModel):
+    name: str = "User"
+    birth_date: str = Field(..., description="YYYY-MM-DD")
+    birth_time: str = Field(..., description="HH:MM")
+    birth_city: str
+    gender: str | None = None
+    domain: str | None = None
+    mbti: str | None = None
+
+
 class TarotCard(BaseModel):
+
     id: str
     name: str
     arcana: str | None = None
-    suit: str | None = None
     number: str | None = None
     orientation: Literal["upright", "reversed"]
     meaning_source: Literal["love", "career", "general"]
@@ -104,5 +114,37 @@ class AnalyzeResponse(BaseModel):
     astrology: ReportAstrology
     tarot: ReportTarot
     mbti: ReportMbti | None = None
+    action_guide: list[str] = Field(default_factory=list)
+    followup_questions: list[str] = Field(default_factory=list)
+
+
+class ProfileResponse(BaseModel):
+    schema_version: str = "0.1"
+    profile: ReportProfile
+    astrology: ReportAstrology
+    mbti: ReportMbti | None = None
+    action_guide: list[str] = Field(default_factory=list)
+    followup_questions: list[str] = Field(default_factory=list)
+
+
+class TarotDeckRequest(BaseModel):
+    question: str
+    domain: str | None = None
+    spread: SpreadConfig = Field(default_factory=SpreadConfig)
+
+
+class TarotDeckResponse(BaseModel):
+    deck_id: str
+    deck_size: int
+    required_picks: int
+
+
+class TarotRevealRequest(BaseModel):
+    deck_id: str
+    picks: list[int]
+
+
+class TarotRevealResponse(BaseModel):
+    tarot: ReportTarot
     action_guide: list[str] = Field(default_factory=list)
     followup_questions: list[str] = Field(default_factory=list)

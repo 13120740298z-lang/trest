@@ -146,21 +146,59 @@ def build_astrology(*, chart: dict, highlights: list[str]) -> ReportAstrology:
         yin_yang_counts={"yin": yin, "yang": yang},
     )
 
+    def _top_count(m: dict[str, int]) -> str:
+        if not m:
+            return "（暂无）"
+        items = sorted(m.items(), key=lambda kv: kv[1], reverse=True)
+        k, v = items[0]
+        return f"{k}（{v}）"
+
+    energy_overview = "\n".join(
+        [
+            f"- 主导元素：{_top_count(stats.element_counts)}",
+            f"- 主导模式：{_top_count(stats.quality_counts)}",
+            f"- 阴阳倾向：yang={stats.yin_yang_counts.get('yang', 0)} / yin={stats.yin_yang_counts.get('yin', 0)}",
+        ]
+    )
+
+    sun_text = f"太阳落在 {_sign_label(sun.get('sign'))}（第 {house_num(sun.get('house')) or '-'} 宫）"
+    moon_text = f"月亮落在 {_sign_label(moon.get('sign'))}（第 {house_num(moon.get('house')) or '-'} 宫）"
+    asc_text = f"上升在 {_sign_label(asc.get('sign'))}"
+
+    venus = chart.get("venus", {}) if isinstance(chart.get("venus"), dict) else {}
+    mars = chart.get("mars", {}) if isinstance(chart.get("mars"), dict) else {}
+    mc = chart.get("medium_coeli", {}) if isinstance(chart.get("medium_coeli"), dict) else {}
+
+    rel_text = "\n".join(
+        [
+            f"- 金星：{_sign_label(venus.get('sign'))}（第 {house_num(venus.get('house')) or '-'} 宫）",
+            f"- 火星：{_sign_label(mars.get('sign'))}（第 {house_num(mars.get('house')) or '-'} 宫）",
+            "你在亲密关系里更像是“价值观与节奏优先”的人：当关系的规则、承诺、边界不清晰时，你更容易感到消耗。",
+        ]
+    )
+
+    career_text = "\n".join(
+        [
+            f"- 中天：{_sign_label(mc.get('sign'))}",
+            f"- 太阳主题：{sun_text}",
+            "你的成就感更来自“被看见/被认可/做出可衡量结果”。当你把长期目标拆成阶段里程碑，你会明显进入高效状态。",
+        ]
+    )
+
+    guidance = "\n".join(
+        [
+            "1. 先定义你未来 30 天最想稳定的一个习惯（睡眠/运动/学习/关系沟通），并把它变成可执行的日程。",
+            "2. 遇到卡顿时，先用“事实—感受—需求—请求”的顺序表达，减少情绪内耗。",
+            "3. 把你最在意的领域（爱情/事业/成长）写成一句具体结果，再用塔罗做场景细化会更准。",
+        ]
+    )
+
     sections = [
-        ReportSection(
-            title="关键落点",
-            content="；".join(
-                [
-                    f"太阳在 {_sign_label(sun.get('sign'))}（第 {sun.get('house', '')} 宫）",
-                    f"月亮在 {_sign_label(moon.get('sign'))}（第 {moon.get('house', '')} 宫）",
-                    f"上升在 {_sign_label(asc.get('sign'))}",
-                ]
-            ),
-        ),
-        ReportSection(
-            title="长期基调",
-            content="这一层用于描述长期性格与人生叙事的倾向。第一版先用核心落点给出概括，后续可加入相位与宫位主题的更精细规则。",
-        ),
+        ReportSection(title="一、星盘能量总览", content=energy_overview),
+        ReportSection(title="二、核心人格结构分析", content="\n".join([f"- {sun_text}", f"- {moon_text}", f"- {asc_text}"])),
+        ReportSection(title="三、人际关系与情感模式", content=rel_text),
+        ReportSection(title="四、事业与社会成就领域", content=career_text),
+        ReportSection(title="五、整体发展建议", content=guidance),
     ]
 
     return ReportAstrology(

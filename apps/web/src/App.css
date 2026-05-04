@@ -15,6 +15,13 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+.modeRow {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .main {
   margin-top: 22px;
   display: grid;
@@ -76,6 +83,26 @@ input {
   border-radius: 10px;
   padding: 10px 10px;
   font-size: 14px;
+}
+
+select {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.25);
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+  padding: 10px 10px;
+  font-size: 14px;
+}
+
+textarea.textarea {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.25);
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+  padding: 10px 10px;
+  font-size: 14px;
+  min-height: 92px;
+  resize: vertical;
 }
 
 button {
@@ -290,4 +317,53 @@ button:disabled {
   margin-top: 6px;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.62);
+}
+
+.deck {
+  margin-top: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.deckHint {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
+}
+
+.deckGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 540px) {
+  .deckGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.cardBack {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 0;
+  height: 92px;
+}
+
+.cardBack.selected {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.cardBackInner {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.8);
 }

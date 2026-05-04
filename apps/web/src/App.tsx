@@ -3,7 +3,7 @@ import './App.css'
 
 type SpreadType = 'single' | 'three'
 
-type AnalyzeResponse = {
+type ProfileResponse = {
   schema_version: string
   profile: { summary: string; traits: string[]; strengths: string[]; blind_spots: string[] }
   astrology: {
@@ -39,6 +39,18 @@ type AnalyzeResponse = {
     }
     interpretation: { title: string; content: string }[]
   }
+  mbti?: { type: string; interpretation: { title: string; content: string }[] } | null
+  action_guide: string[]
+  followup_questions: string[]
+}
+
+type TarotDeckResponse = {
+  deck_id: string
+  deck_size: number
+  required_picks: number
+}
+
+type TarotRevealResponse = {
   tarot: {
     spread: { type: SpreadType; include_reversed: boolean; seed: number | null }
     cards: {
@@ -51,7 +63,6 @@ type AnalyzeResponse = {
     }[]
     interpretation: { title: string; content: string }[]
   }
-  mbti?: { type: string; interpretation: { title: string; content: string }[] } | null
   action_guide: string[]
   followup_questions: string[]
 }
@@ -59,6 +70,7 @@ type AnalyzeResponse = {
 function App() {
   const apiBase = useMemo(() => import.meta.env.VITE_API_BASE ?? '', [])
 
+  const [mode, setMode] = useState<'profile' | 'tarot'>('profile')
   const [tab, setTab] = useState<'report' | 'params' | 'stats'>('report')
   const [name, setName] = useState('User')
   const [birthDate, setBirthDate] = useState('1990-01-01')
@@ -67,14 +79,18 @@ function App() {
   const [gender, setGender] = useState('')
   const [domain, setDomain] = useState('自我成长')
   const [mbti, setMbti] = useState('')
-  const [spreadType, setSpreadType] = useState<SpreadType>('single')
+  const [question, setQuestion] = useState('')
+  const [spreadType, setSpreadType] = useState<SpreadType>('three')
   const [includeReversed, setIncludeReversed] = useState(true)
+  const [deck, setDeck] = useState<TarotDeckResponse | null>(null)
+  const [picks, setPicks] = useState<number[]>([])
+  const [tarotResult, setTarotResult] = useState<TarotRevealResponse | null>(null)
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [result, setResult] = useState<AnalyzeResponse | null>(null)
+  const [result, setResult] = useState<ProfileResponse | null>(null)
 
-  async function onSubmit(e: React.FormEvent) {
+  async function onSubmitProfile(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
     setError(null)
@@ -82,7 +98,7 @@ function App() {
     setTab('report')
 
     try {
-      const resp = await fetch(`${apiBase}/api/analyze`, {
+      const resp = await fetch(`${apiBase}/api/profile`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -93,7 +109,6 @@ function App() {
           gender: gender || null,
           domain: domain || null,
           mbti: mbti || null,
-          spread: { type: spreadType, include_reversed: includeReversed, seed: null },
         }),
       })
 
@@ -101,7 +116,7 @@ function App() {
         const text = await resp.text()
         throw new Error(text || `HTTP ${resp.status}`)
       }
-      const json = (await resp.json()) as AnalyzeResponse
+      const json = (await resp.json()) as ProfileResponse
       setResult(json)
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err))
@@ -110,17 +125,110 @@ function App() {
     }
   }
 
+  async function onCreateDeck(e: React.FormEvent) {
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
+    setDeck(null)
+    setTarotResult(null)
+    setPicks([])
+
+    try {
+      const resp = await fetch(`${apiBase}/api/tarot/deck`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question,
+          domain: domain || null,
+          spread: { type: spreadType, include_reversed: includeReversed, seed: null },
+        }),
+      })
+      if (!resp.ok) {
+        const text = await resp.text()
+        throw new Error(text || `HTTP ${resp.status}`)
+      }
+      const json = (await resp.json()) as TarotDeckResponse
+      setDeck(json)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : String(err))
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function revealDeck(nextPicks: number[]) {
+    if (!deck) return
+    setLoading(true)
+    setError(null)
+    try {
+      const resp = await fetch(`${apiBase}/api/tarot/reveal`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          deck_id: deck.deck_id,
+          picks: nextPicks,
+        }),
+      })
+      if (!resp.ok) {
+        const text = await resp.text()
+        throw new Error(text || `HTTP ${resp.status}`)
+      }
+      const json = (await resp.json()) as TarotRevealResponse
+      setTarotResult(json)
+      setDeck(null)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : String(err))
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  function togglePick(i: number) {
+    if (!deck || tarotResult) return
+    const exists = picks.includes(i)
+    const required = deck.required_picks
+    let next = exists ? picks.filter((x) => x !== i) : [...picks, i]
+    if (next.length > required) return
+    setPicks(next)
+    if (next.length === required) {
+      void revealDeck(next)
+    }
+  }
+
   return (
     <div className="page">
       <header className="header">
         <h1>占星 + 塔罗 + MBTI 性格剖析（MVP）</h1>
-        <p className="sub">第一版不接入 LLM：跑通数据与规则链，输出结构化报告。</p>
+        <p className="sub">第一版不接入 LLM：星盘画像（长期）+ 塔罗细化场景（短期）。</p>
+        <div className="modeRow">
+          <button
+            type="button"
+            className={mode === 'profile' ? 'tab active' : 'tab'}
+            onClick={() => {
+              setMode('profile')
+              setError(null)
+            }}
+          >
+            星盘画像
+          </button>
+          <button
+            type="button"
+            className={mode === 'tarot' ? 'tab active' : 'tab'}
+            onClick={() => {
+              setMode('tarot')
+              setError(null)
+            }}
+          >
+            塔罗细化
+          </button>
+        </div>
       </header>
 
       <main className="main">
         <section className="card">
           <h2>输入</h2>
-          <form className="form" onSubmit={onSubmit}>
+          {mode === 'profile' ? (
+            <form className="form" onSubmit={onSubmitProfile}>
             <div className="grid">
               <label>
                 <span>昵称</span>
@@ -152,41 +260,74 @@ function App() {
               </label>
             </div>
 
-            <div className="spread">
-              <div className="spreadRow">
-                <span>牌阵</span>
-                <label>
-                  <input
-                    type="radio"
-                    name="spread"
-                    checked={spreadType === 'single'}
-                    onChange={() => setSpreadType('single')}
-                  />
-                  单张
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="spread"
-                    checked={spreadType === 'three'}
-                    onChange={() => setSpreadType('three')}
-                  />
-                  三张
-                </label>
-              </div>
-              <label className="checkbox">
-                <input type="checkbox" checked={includeReversed} onChange={(e) => setIncludeReversed(e.target.checked)} />
-                包含逆位
-              </label>
-            </div>
-
             <div className="actions">
               <button type="submit" disabled={loading}>
                 {loading ? '生成中...' : '生成报告'}
               </button>
               <span className="hint">API：{apiBase || '(通过前端代理)'}</span>
             </div>
-          </form>
+            </form>
+          ) : (
+            <form className="form" onSubmit={onCreateDeck}>
+              <label>
+                <span>你的问题（越具体越准）</span>
+                <textarea
+                  className="textarea"
+                  value={question}
+                  onChange={(e) => setQuestion(e.target.value)}
+                  placeholder="例如：我和 TA 的关系下一步该怎么推进？ / 我是否该换工作？"
+                  required
+                />
+              </label>
+
+              <div className="grid">
+                <label>
+                  <span>关注领域</span>
+                  <input value={domain} onChange={(e) => setDomain(e.target.value)} placeholder="爱情 / 事业 / 自我成长" />
+                </label>
+                <label>
+                  <span>牌阵</span>
+                  <select value={spreadType} onChange={(e) => setSpreadType(e.target.value as SpreadType)}>
+                    <option value="single">单张</option>
+                    <option value="three">三张</option>
+                  </select>
+                </label>
+              </div>
+
+              <label className="checkbox">
+                <input type="checkbox" checked={includeReversed} onChange={(e) => setIncludeReversed(e.target.checked)} />
+                包含逆位
+              </label>
+
+              <div className="actions">
+                <button type="submit" disabled={loading}>
+                  {loading ? '生成中...' : '生成牌阵'}
+                </button>
+                <span className="hint">接下来会出现牌背，点选抽牌</span>
+              </div>
+
+              {deck ? (
+                <div className="deck">
+                  <div className="deckHint">
+                    请点选 {deck.required_picks} 张牌（已选 {picks.length}/{deck.required_picks}）
+                  </div>
+                  <div className="deckGrid">
+                    {Array.from({ length: deck.deck_size }).map((_, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        className={picks.includes(i) ? 'cardBack selected' : 'cardBack'}
+                        onClick={() => togglePick(i)}
+                        disabled={loading || tarotResult !== null}
+                      >
+                        <div className="cardBackInner">?</div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </form>
+          )}
 
           <datalist id="cities">
             <option value="北京" />
@@ -205,9 +346,10 @@ function App() {
         <section className="card">
           <h2>输出</h2>
           {error ? <div className="error">{error}</div> : null}
-          {!result ? <div className="empty">提交后会在这里展示结构化报告。</div> : null}
+          {mode === 'profile' && !result ? <div className="empty">提交后会在这里展示结构化报告。</div> : null}
+          {mode === 'tarot' && !tarotResult ? <div className="empty">生成牌阵并点选抽牌后，会在这里展示塔罗解读。</div> : null}
 
-          {result ? (
+          {mode === 'profile' && result ? (
             <div className="report">
               <div className="tabs">
                 <button
@@ -372,33 +514,9 @@ function App() {
                     {result.astrology.interpretation.map((s) => (
                       <div key={s.title} className="section">
                         <h4>{s.title}</h4>
-                        <p>{s.content}</p>
+                        <p style={{ whiteSpace: 'pre-wrap' }}>{s.content}</p>
                       </div>
                     ))}
-                  </section>
-
-                  <section className="block">
-                    <h3>塔罗</h3>
-                    <div className="cards">
-                      {result.tarot.cards.map((c) => (
-                        <div key={c.id} className="tarotCard">
-                          <div className="tarotTitle">
-                            {c.name}
-                            <span className="badge">{c.orientation === 'upright' ? '正位' : '逆位'}</span>
-                          </div>
-                          <div className="tarotMeaning">{c.meaning}</div>
-                          <div className="tarotMeta">
-                            牌义来源：
-                            {c.meaning_source === 'love'
-                              ? '爱情'
-                              : c.meaning_source === 'career'
-                                ? '事业'
-                                : '通用'}
-                          </div>
-                          {c.keywords.length ? <div className="tarotKw">{c.keywords.join(' / ')}</div> : null}
-                        </div>
-                      ))}
-                    </div>
                   </section>
 
                   {result.mbti ? (
@@ -435,6 +553,48 @@ function App() {
                   </section>
                 </>
               ) : null}
+            </div>
+          ) : null}
+
+          {mode === 'tarot' && tarotResult ? (
+            <div className="report">
+              <section className="block">
+                <h3>塔罗解读</h3>
+                <div className="cards">
+                  {tarotResult.tarot.cards.map((c) => (
+                    <div key={c.id} className="tarotCard">
+                      <div className="tarotTitle">
+                        {c.name}
+                        <span className="badge">{c.orientation === 'upright' ? '正位' : '逆位'}</span>
+                      </div>
+                      <div className="tarotMeaning">{c.meaning}</div>
+                      <div className="tarotMeta">
+                        牌义来源：
+                        {c.meaning_source === 'love' ? '爱情' : c.meaning_source === 'career' ? '事业' : '通用'}
+                      </div>
+                      {c.keywords.length ? <div className="tarotKw">{c.keywords.join(' / ')}</div> : null}
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section className="block">
+                <h3>行动指南</h3>
+                <ol>
+                  {tarotResult.action_guide.map((a) => (
+                    <li key={a}>{a}</li>
+                  ))}
+                </ol>
+              </section>
+
+              <section className="block">
+                <h3>继续追问</h3>
+                <ul>
+                  {tarotResult.followup_questions.map((q) => (
+                    <li key={q}>{q}</li>
+                  ))}
+                </ul>
+              </section>
             </div>
           ) : null}
         </section>
