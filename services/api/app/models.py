@@ -29,6 +29,7 @@ class TarotCard(BaseModel):
     suit: str | None = None
     number: str | None = None
     orientation: Literal["upright", "reversed"]
+    meaning_source: Literal["love", "career", "general"]
     keywords: list[str] = Field(default_factory=list)
     meaning: str
 
@@ -70,4 +71,3 @@ class AnalyzeResponse(BaseModel):
     mbti: ReportMbti | None = None
     action_guide: list[str] = Field(default_factory=list)
     followup_questions: list[str] = Field(default_factory=list)
-

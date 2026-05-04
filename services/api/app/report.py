@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from .models import ReportAstrology, ReportMbti, ReportProfile, ReportSection, ReportTarot, TarotCard
+from .mbti_assets import load_mbti_assets
 
 
 _SIGN_ZH = {
@@ -92,11 +93,40 @@ def build_tarot(*, spread, cards: list[TarotCard], domain: str | None) -> Report
 
 def build_mbti(*, mbti: str) -> ReportMbti:
     t = mbti.upper()
+    assets = load_mbti_assets()
+
+    def side(code: str) -> str:
+        s = assets.sides.get(code)
+        if not s:
+            return code
+        return f"{s.label}"
+
+    dims = [
+        ("能量", t[0] if len(t) > 0 else ""),
+        ("信息", t[1] if len(t) > 1 else ""),
+        ("决策", t[2] if len(t) > 2 else ""),
+        ("执行", t[3] if len(t) > 3 else ""),
+    ]
+    dim_lines = [f"- {name}：{side(code)}" for name, code in dims if code]
+
+    example_lines: list[str] = []
+    for _, code in dims:
+        s = assets.sides.get(code)
+        if not s:
+            continue
+        for ex in s.examples[:2]:
+            example_lines.append(f"- {code}：{ex}")
+
     sections = [
+        ReportSection(title="四维倾向", content="\n".join(dim_lines) if dim_lines else t),
         ReportSection(
-            title="沟通与决策偏好",
-            content="第一版先把 MBTI 当作自我描述标签纳入画像。后续接入数据集与 LLM 后，可生成更强的场景化建议与人际策略。",
-        )
+            title="来自数据集的示例表达",
+            content="\n".join(example_lines) if example_lines else "（暂无示例）",
+        ),
+        ReportSection(
+            title="使用方式",
+            content="这些示例用于“对齐表达风格”，不是固定结论。你可以在继续追问时，用它来约束输出语气与决策偏好。",
+        ),
     ]
     return ReportMbti(type=t, interpretation=sections)
 
@@ -121,4 +151,3 @@ def build_followups(*, domain: str | None) -> list[str]:
     if domain:
         qs.insert(0, f"在“{domain}”上，你最想要的具体结果是什么？")
     return qs[:5]
-

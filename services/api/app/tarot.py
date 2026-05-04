@@ -54,14 +54,18 @@ def draw_cards(
 
         keywords = c.get("upright_keywords") if orientation == "upright" else c.get("reversed_keywords")
 
+        meaning_source: Literal["love", "career", "general"] = "general"
         meaning = None
         if use_love:
             meaning = c.get("love_meaning")
+            meaning_source = "love"
         elif use_career:
             meaning = c.get("career_meaning")
+            meaning_source = "career"
 
         if meaning is None or not str(meaning).strip():
             meaning = c.get("meaning_upright") if orientation == "upright" else c.get("meaning_reversed")
+            meaning_source = "general"
         meaning = str(meaning or "").strip()
 
         out.append(
@@ -72,6 +76,7 @@ def draw_cards(
                 suit=c.get("suit"),
                 number=c.get("number"),
                 orientation=orientation,
+                meaning_source=meaning_source,
                 keywords=list(keywords or []),
                 meaning=meaning,
             )

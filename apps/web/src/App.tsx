@@ -9,7 +9,14 @@ type AnalyzeResponse = {
   astrology: { highlights: string[]; interpretation: { title: string; content: string }[] }
   tarot: {
     spread: { type: SpreadType; include_reversed: boolean; seed: number | null }
-    cards: { id: string; name: string; orientation: 'upright' | 'reversed'; keywords: string[]; meaning: string }[]
+    cards: {
+      id: string
+      name: string
+      orientation: 'upright' | 'reversed'
+      meaning_source: 'love' | 'career' | 'general'
+      keywords: string[]
+      meaning: string
+    }[]
     interpretation: { title: string; content: string }[]
   }
   mbti?: { type: string; interpretation: { title: string; content: string }[] } | null
@@ -205,11 +212,30 @@ function App() {
                         <span className="badge">{c.orientation === 'upright' ? '正位' : '逆位'}</span>
                       </div>
                       <div className="tarotMeaning">{c.meaning}</div>
+                      <div className="tarotMeta">
+                        牌义来源：
+                        {c.meaning_source === 'love' ? '爱情' : c.meaning_source === 'career' ? '事业' : '通用'}
+                      </div>
                       {c.keywords.length ? <div className="tarotKw">{c.keywords.join(' / ')}</div> : null}
                     </div>
                   ))}
                 </div>
               </section>
+
+              {result.mbti ? (
+                <section className="block">
+                  <h3>MBTI</h3>
+                  <div className="chips">
+                    <span className="chip">{result.mbti.type}</span>
+                  </div>
+                  {result.mbti.interpretation.map((s) => (
+                    <div key={s.title} className="section">
+                      <h4>{s.title}</h4>
+                      <p style={{ whiteSpace: 'pre-wrap' }}>{s.content}</p>
+                    </div>
+                  ))}
+                </section>
+              ) : null}
 
               <section className="block">
                 <h3>行动指南</h3>
