@@ -5,10 +5,21 @@
     "arcana": "major",
     "suit": null,
     "number": "0",
-    "upright_keywords": ["beginnings", "freedom", "trust"],
-    "reversed_keywords": ["reckless", "naivety", "risk"],
-    "meaning_upright": "A fresh start, stepping into the unknown with curiosity and trust.",
-    "meaning_reversed": "Hesitation, impulsiveness, or ignoring obvious risks."
+    "upright_keywords": [
+      "New beginnings",
+      "innocence",
+      "adventure",
+      "free spirit"
+    ],
+    "reversed_keywords": [
+      "Recklessness",
+      "fear of change",
+      "holding back"
+    ],
+    "meaning_upright": "New beginnings, innocence, adventure, free spirit",
+    "meaning_reversed": "Recklessness, fear of change, holding back",
+    "love_meaning": "Exciting new romance, spontaneous love",
+    "career_meaning": "New career path, leap of faith"
   },
   {
     "id": "major_01_the_magician",
@@ -16,10 +27,20 @@
     "arcana": "major",
     "suit": null,
     "number": "1",
-    "upright_keywords": ["initiative", "skill", "manifestation"],
-    "reversed_keywords": ["scattered", "manipulation", "doubt"],
-    "meaning_upright": "You have the tools and momentum to turn intention into action.",
-    "meaning_reversed": "Energy is unfocused, or you doubt your ability to follow through."
+    "upright_keywords": [
+      "Manifestation",
+      "willpower",
+      "resourcefulness"
+    ],
+    "reversed_keywords": [
+      "Manipulation",
+      "poor planning",
+      "untapped talents"
+    ],
+    "meaning_upright": "Manifestation, willpower, resourcefulness",
+    "meaning_reversed": "Manipulation, poor planning, untapped talents",
+    "love_meaning": "Magnetic attraction, confident pursuit",
+    "career_meaning": "Skill mastery, new opportunity"
   },
   {
     "id": "major_02_the_high_priestess",
@@ -27,42 +48,1636 @@
     "arcana": "major",
     "suit": null,
     "number": "2",
-    "upright_keywords": ["intuition", "inner voice", "mystery"],
-    "reversed_keywords": ["blocked intuition", "secrets", "confusion"],
-    "meaning_upright": "Slow down and listen to what you already know beneath the surface.",
-    "meaning_reversed": "You may be ignoring inner signals or missing key information."
+    "upright_keywords": [
+      "Intuition",
+      "mystery",
+      "inner wisdom",
+      "subconscious"
+    ],
+    "reversed_keywords": [
+      "Secrets",
+      "disconnection from intuition"
+    ],
+    "meaning_upright": "Intuition, mystery, inner wisdom, subconscious",
+    "meaning_reversed": "Secrets, disconnection from intuition",
+    "love_meaning": "Hidden feelings, trust your instincts",
+    "career_meaning": "Follow your gut, hidden knowledge"
   },
   {
-    "id": "minor_cups_ace",
+    "id": "major_03_the_empress",
+    "name": "The Empress",
+    "arcana": "major",
+    "suit": null,
+    "number": "3",
+    "upright_keywords": [
+      "Abundance",
+      "nurturing",
+      "fertility",
+      "beauty"
+    ],
+    "reversed_keywords": [
+      "Insecurity",
+      "neglect",
+      "creative block"
+    ],
+    "meaning_upright": "Abundance, nurturing, fertility, beauty",
+    "meaning_reversed": "Insecurity, neglect, creative block",
+    "love_meaning": "Deep love, sensual connection",
+    "career_meaning": "Growth, prosperity, creative success"
+  },
+  {
+    "id": "major_04_the_emperor",
+    "name": "The Emperor",
+    "arcana": "major",
+    "suit": null,
+    "number": "4",
+    "upright_keywords": [
+      "Authority",
+      "structure",
+      "leadership",
+      "stability"
+    ],
+    "reversed_keywords": [
+      "Domination",
+      "rigidity",
+      "lack of discipline"
+    ],
+    "meaning_upright": "Authority, structure, leadership, stability",
+    "meaning_reversed": "Domination, rigidity, lack of discipline",
+    "love_meaning": "Committed partner, protective love",
+    "career_meaning": "Leadership role, promotion"
+  },
+  {
+    "id": "major_05_the_hierophant",
+    "name": "The Hierophant",
+    "arcana": "major",
+    "suit": null,
+    "number": "5",
+    "upright_keywords": [
+      "Tradition",
+      "spiritual guidance",
+      "conformity"
+    ],
+    "reversed_keywords": [
+      "Rebellion",
+      "subversion",
+      "new approaches"
+    ],
+    "meaning_upright": "Tradition, spiritual guidance, conformity",
+    "meaning_reversed": "Rebellion, subversion, new approaches",
+    "love_meaning": "Traditional relationship, commitment",
+    "career_meaning": "Mentorship, conventional path"
+  },
+  {
+    "id": "major_06_the_lovers",
+    "name": "The Lovers",
+    "arcana": "major",
+    "suit": null,
+    "number": "6",
+    "upright_keywords": [
+      "Love",
+      "choices",
+      "partnerships",
+      "harmony"
+    ],
+    "reversed_keywords": [
+      "Disharmony",
+      "imbalance",
+      "misalignment"
+    ],
+    "meaning_upright": "Love, choices, partnerships, harmony",
+    "meaning_reversed": "Disharmony, imbalance, misalignment",
+    "love_meaning": "Soulmate connection, deep bond",
+    "career_meaning": "Important partnership, career choice"
+  },
+  {
+    "id": "major_07_the_chariot",
+    "name": "The Chariot",
+    "arcana": "major",
+    "suit": null,
+    "number": "7",
+    "upright_keywords": [
+      "Determination",
+      "willpower",
+      "triumph",
+      "control"
+    ],
+    "reversed_keywords": [
+      "Lack of direction",
+      "aggression"
+    ],
+    "meaning_upright": "Determination, willpower, triumph, control",
+    "meaning_reversed": "Lack of direction, aggression",
+    "love_meaning": "Pursuing love with confidence",
+    "career_meaning": "Ambition, career victory"
+  },
+  {
+    "id": "major_08_strength",
+    "name": "Strength",
+    "arcana": "major",
+    "suit": null,
+    "number": "8",
+    "upright_keywords": [
+      "Courage",
+      "patience",
+      "inner strength",
+      "compassion"
+    ],
+    "reversed_keywords": [
+      "Self-doubt",
+      "weakness",
+      "insecurity"
+    ],
+    "meaning_upright": "Courage, patience, inner strength, compassion",
+    "meaning_reversed": "Self-doubt, weakness, insecurity",
+    "love_meaning": "Patient love, gentle strength",
+    "career_meaning": "Perseverance, overcoming challenges"
+  },
+  {
+    "id": "major_09_the_hermit",
+    "name": "The Hermit",
+    "arcana": "major",
+    "suit": null,
+    "number": "9",
+    "upright_keywords": [
+      "Introspection",
+      "solitude",
+      "inner guidance"
+    ],
+    "reversed_keywords": [
+      "Isolation",
+      "loneliness",
+      "withdrawal"
+    ],
+    "meaning_upright": "Introspection, solitude, inner guidance",
+    "meaning_reversed": "Isolation, loneliness, withdrawal",
+    "love_meaning": "Self-discovery before love",
+    "career_meaning": "Career reflection, finding purpose"
+  },
+  {
+    "id": "major_10_wheel_of_fortune",
+    "name": "Wheel of Fortune",
+    "arcana": "major",
+    "suit": null,
+    "number": "10",
+    "upright_keywords": [
+      "Cycles",
+      "destiny",
+      "turning points",
+      "luck"
+    ],
+    "reversed_keywords": [
+      "Bad luck",
+      "resistance to change"
+    ],
+    "meaning_upright": "Cycles, destiny, turning points, luck",
+    "meaning_reversed": "Bad luck, resistance to change",
+    "love_meaning": "Fated romance, relationship shift",
+    "career_meaning": "Career change, unexpected opportunity"
+  },
+  {
+    "id": "major_11_justice",
+    "name": "Justice",
+    "arcana": "major",
+    "suit": null,
+    "number": "11",
+    "upright_keywords": [
+      "Fairness",
+      "truth",
+      "accountability",
+      "law"
+    ],
+    "reversed_keywords": [
+      "Unfairness",
+      "dishonesty",
+      "lack of accountability"
+    ],
+    "meaning_upright": "Fairness, truth, accountability, law",
+    "meaning_reversed": "Unfairness, dishonesty, lack of accountability",
+    "love_meaning": "Fair partnership, karmic relationship",
+    "career_meaning": "Legal matters, ethical decisions"
+  },
+  {
+    "id": "major_12_the_hanged_man",
+    "name": "The Hanged Man",
+    "arcana": "major",
+    "suit": null,
+    "number": "12",
+    "upright_keywords": [
+      "Surrender",
+      "new perspective",
+      "pause",
+      "letting go"
+    ],
+    "reversed_keywords": [
+      "Stalling",
+      "resistance",
+      "indecision"
+    ],
+    "meaning_upright": "Surrender, new perspective, pause, letting go",
+    "meaning_reversed": "Stalling, resistance, indecision",
+    "love_meaning": "Pause in relationship, new viewpoint",
+    "career_meaning": "Career pause, seeing things differently"
+  },
+  {
+    "id": "major_13_death",
+    "name": "Death",
+    "arcana": "major",
+    "suit": null,
+    "number": "13",
+    "upright_keywords": [
+      "Transformation",
+      "endings",
+      "new beginnings",
+      "change"
+    ],
+    "reversed_keywords": [
+      "Resistance to change",
+      "stagnation"
+    ],
+    "meaning_upright": "Transformation, endings, new beginnings, change",
+    "meaning_reversed": "Resistance to change, stagnation",
+    "love_meaning": "Relationship transformation, letting go",
+    "career_meaning": "Career ending leading to new start"
+  },
+  {
+    "id": "major_14_temperance",
+    "name": "Temperance",
+    "arcana": "major",
+    "suit": null,
+    "number": "14",
+    "upright_keywords": [
+      "Balance",
+      "patience",
+      "moderation",
+      "purpose"
+    ],
+    "reversed_keywords": [
+      "Imbalance",
+      "excess",
+      "lack of patience"
+    ],
+    "meaning_upright": "Balance, patience, moderation, purpose",
+    "meaning_reversed": "Imbalance, excess, lack of patience",
+    "love_meaning": "Balanced relationship, harmony",
+    "career_meaning": "Work-life balance, patience pays off"
+  },
+  {
+    "id": "major_15_the_devil",
+    "name": "The Devil",
+    "arcana": "major",
+    "suit": null,
+    "number": "15",
+    "upright_keywords": [
+      "Addiction",
+      "materialism",
+      "shadow self",
+      "bondage"
+    ],
+    "reversed_keywords": [
+      "Breaking free",
+      "releasing limiting beliefs"
+    ],
+    "meaning_upright": "Addiction, materialism, shadow self, bondage",
+    "meaning_reversed": "Breaking free, releasing limiting beliefs",
+    "love_meaning": "Toxic attachment, passion without depth",
+    "career_meaning": "Feeling trapped in job, materialism"
+  },
+  {
+    "id": "major_16_the_tower",
+    "name": "The Tower",
+    "arcana": "major",
+    "suit": null,
+    "number": "16",
+    "upright_keywords": [
+      "Sudden change",
+      "upheaval",
+      "revelation",
+      "chaos"
+    ],
+    "reversed_keywords": [
+      "Avoiding disaster",
+      "fear of change"
+    ],
+    "meaning_upright": "Sudden change, upheaval, revelation, chaos",
+    "meaning_reversed": "Avoiding disaster, fear of change",
+    "love_meaning": "Relationship shakeup, revelation",
+    "career_meaning": "Sudden job loss, unexpected upheaval"
+  },
+  {
+    "id": "major_17_the_star",
+    "name": "The Star",
+    "arcana": "major",
+    "suit": null,
+    "number": "17",
+    "upright_keywords": [
+      "Hope",
+      "renewal",
+      "spirituality",
+      "inspiration"
+    ],
+    "reversed_keywords": [
+      "Despair",
+      "lack of faith",
+      "disconnection"
+    ],
+    "meaning_upright": "Hope, renewal, spirituality, inspiration",
+    "meaning_reversed": "Despair, lack of faith, disconnection",
+    "love_meaning": "Healing love, renewed hope",
+    "career_meaning": "Creative inspiration, dream career"
+  },
+  {
+    "id": "major_18_the_moon",
+    "name": "The Moon",
+    "arcana": "major",
+    "suit": null,
+    "number": "18",
+    "upright_keywords": [
+      "Illusion",
+      "fear",
+      "subconscious",
+      "anxiety"
+    ],
+    "reversed_keywords": [
+      "Release of fear",
+      "clarity emerging"
+    ],
+    "meaning_upright": "Illusion, fear, subconscious, anxiety",
+    "meaning_reversed": "Release of fear, clarity emerging",
+    "love_meaning": "Confusion in love, hidden emotions",
+    "career_meaning": "Uncertainty, trust your intuition"
+  },
+  {
+    "id": "major_19_the_sun",
+    "name": "The Sun",
+    "arcana": "major",
+    "suit": null,
+    "number": "19",
+    "upright_keywords": [
+      "Joy",
+      "success",
+      "vitality",
+      "positivity"
+    ],
+    "reversed_keywords": [
+      "Temporary sadness",
+      "lack of clarity"
+    ],
+    "meaning_upright": "Joy, success, vitality, positivity",
+    "meaning_reversed": "Temporary sadness, lack of clarity",
+    "love_meaning": "Happy relationship, joy in love",
+    "career_meaning": "Career success, recognition"
+  },
+  {
+    "id": "major_20_judgement",
+    "name": "Judgement",
+    "arcana": "major",
+    "suit": null,
+    "number": "20",
+    "upright_keywords": [
+      "Rebirth",
+      "reflection",
+      "reckoning",
+      "absolution"
+    ],
+    "reversed_keywords": [
+      "Self-doubt",
+      "refusal to learn"
+    ],
+    "meaning_upright": "Rebirth, reflection, reckoning, absolution",
+    "meaning_reversed": "Self-doubt, refusal to learn",
+    "love_meaning": "Relationship evaluation, second chance",
+    "career_meaning": "Career calling, important decision"
+  },
+  {
+    "id": "major_21_the_world",
+    "name": "The World",
+    "arcana": "major",
+    "suit": null,
+    "number": "21",
+    "upright_keywords": [
+      "Completion",
+      "accomplishment",
+      "travel",
+      "wholeness"
+    ],
+    "reversed_keywords": [
+      "Incompletion",
+      "shortcuts",
+      "delays"
+    ],
+    "meaning_upright": "Completion, accomplishment, travel, wholeness",
+    "meaning_reversed": "Incompletion, shortcuts, delays",
+    "love_meaning": "Fulfilled relationship, soulmate found",
+    "career_meaning": "Goal achieved, career milestone"
+  },
+  {
+    "id": "minor_wands_22_ace_of_wands",
+    "name": "Ace of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "22",
+    "upright_keywords": [
+      "Inspiration",
+      "new venture",
+      "potential",
+      "creation"
+    ],
+    "reversed_keywords": [
+      "Delays",
+      "lack of motivation",
+      "hesitation"
+    ],
+    "meaning_upright": "Inspiration, new venture, potential, creation",
+    "meaning_reversed": "Delays, lack of motivation, hesitation",
+    "love_meaning": "Exciting new attraction, passion",
+    "career_meaning": "New business idea, creative spark"
+  },
+  {
+    "id": "minor_wands_23_two_of_wands",
+    "name": "Two of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "23",
+    "upright_keywords": [
+      "Planning",
+      "future vision",
+      "decisions",
+      "discovery"
+    ],
+    "reversed_keywords": [
+      "Fear of unknown",
+      "lack of planning"
+    ],
+    "meaning_upright": "Planning, future vision, decisions, discovery",
+    "meaning_reversed": "Fear of unknown, lack of planning",
+    "love_meaning": "Choosing between partners, planning future",
+    "career_meaning": "Business planning, expanding horizons"
+  },
+  {
+    "id": "minor_wands_24_three_of_wands",
+    "name": "Three of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "24",
+    "upright_keywords": [
+      "Expansion",
+      "foresight",
+      "overseas opportunities"
+    ],
+    "reversed_keywords": [
+      "Delays",
+      "obstacles",
+      "frustration"
+    ],
+    "meaning_upright": "Expansion, foresight, overseas opportunities",
+    "meaning_reversed": "Delays, obstacles, frustration",
+    "love_meaning": "Long-distance love, growth together",
+    "career_meaning": "Business expansion, international work"
+  },
+  {
+    "id": "minor_wands_25_four_of_wands",
+    "name": "Four of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "25",
+    "upright_keywords": [
+      "Celebration",
+      "homecoming",
+      "harmony",
+      "community"
+    ],
+    "reversed_keywords": [
+      "Lack of harmony",
+      "transition",
+      "instability"
+    ],
+    "meaning_upright": "Celebration, homecoming, harmony, community",
+    "meaning_reversed": "Lack of harmony, transition, instability",
+    "love_meaning": "Engagement, wedding, happy home",
+    "career_meaning": "Team success, work celebration"
+  },
+  {
+    "id": "minor_wands_26_five_of_wands",
+    "name": "Five of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "26",
+    "upright_keywords": [
+      "Conflict",
+      "competition",
+      "tension",
+      "disagreement"
+    ],
+    "reversed_keywords": [
+      "Avoiding conflict",
+      "inner conflict"
+    ],
+    "meaning_upright": "Conflict, competition, tension, disagreement",
+    "meaning_reversed": "Avoiding conflict, inner conflict",
+    "love_meaning": "Arguments, competition for attention",
+    "career_meaning": "Workplace rivalry, creative differences"
+  },
+  {
+    "id": "minor_wands_27_six_of_wands",
+    "name": "Six of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "27",
+    "upright_keywords": [
+      "Victory",
+      "recognition",
+      "success",
+      "public acclaim"
+    ],
+    "reversed_keywords": [
+      "Fall from grace",
+      "ego",
+      "lack of recognition"
+    ],
+    "meaning_upright": "Victory, recognition, success, public acclaim",
+    "meaning_reversed": "Fall from grace, ego, lack of recognition",
+    "love_meaning": "Public commitment, admired relationship",
+    "career_meaning": "Promotion, public recognition"
+  },
+  {
+    "id": "minor_wands_28_seven_of_wands",
+    "name": "Seven of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "28",
+    "upright_keywords": [
+      "Defensiveness",
+      "perseverance",
+      "standing ground"
+    ],
+    "reversed_keywords": [
+      "Giving up",
+      "overwhelmed",
+      "exhaustion"
+    ],
+    "meaning_upright": "Defensiveness, perseverance, standing ground",
+    "meaning_reversed": "Giving up, overwhelmed, exhaustion",
+    "love_meaning": "Defending your relationship, boundaries",
+    "career_meaning": "Protecting your position, competition"
+  },
+  {
+    "id": "minor_wands_29_eight_of_wands",
+    "name": "Eight of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "29",
+    "upright_keywords": [
+      "Speed",
+      "movement",
+      "quick progress",
+      "travel"
+    ],
+    "reversed_keywords": [
+      "Delays",
+      "frustration",
+      "waiting"
+    ],
+    "meaning_upright": "Speed, movement, quick progress, travel",
+    "meaning_reversed": "Delays, frustration, waiting",
+    "love_meaning": "Fast-moving romance, exciting news",
+    "career_meaning": "Rapid career progress, travel for work"
+  },
+  {
+    "id": "minor_wands_30_nine_of_wands",
+    "name": "Nine of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "30",
+    "upright_keywords": [
+      "Resilience",
+      "courage",
+      "persistence",
+      "last stand"
+    ],
+    "reversed_keywords": [
+      "Exhaustion",
+      "giving up",
+      "overwhelmed"
+    ],
+    "meaning_upright": "Resilience, courage, persistence, last stand",
+    "meaning_reversed": "Exhaustion, giving up, overwhelmed",
+    "love_meaning": "Guarded heart, persisting through tough times",
+    "career_meaning": "Almost there, don't give up"
+  },
+  {
+    "id": "minor_wands_31_ten_of_wands",
+    "name": "Ten of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "31",
+    "upright_keywords": [
+      "Burden",
+      "responsibility",
+      "hard work",
+      "stress"
+    ],
+    "reversed_keywords": [
+      "Delegation",
+      "release",
+      "breakdown"
+    ],
+    "meaning_upright": "Burden, responsibility, hard work, stress",
+    "meaning_reversed": "Delegation, release, breakdown",
+    "love_meaning": "Carrying relationship burden alone",
+    "career_meaning": "Overworked, need to delegate"
+  },
+  {
+    "id": "minor_wands_32_page_of_wands",
+    "name": "Page of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "32",
+    "upright_keywords": [
+      "Enthusiasm",
+      "exploration",
+      "discovery",
+      "free spirit"
+    ],
+    "reversed_keywords": [
+      "Lack of direction",
+      "setbacks",
+      "procrastination"
+    ],
+    "meaning_upright": "Enthusiasm, exploration, discovery, free spirit",
+    "meaning_reversed": "Lack of direction, setbacks, procrastination",
+    "love_meaning": "Exciting new crush, flirtatious energy",
+    "career_meaning": "New creative project, learning opportunity"
+  },
+  {
+    "id": "minor_wands_33_knight_of_wands",
+    "name": "Knight of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "33",
+    "upright_keywords": [
+      "Energy",
+      "passion",
+      "adventure",
+      "impulsiveness"
+    ],
+    "reversed_keywords": [
+      "Haste",
+      "scattered energy",
+      "delays"
+    ],
+    "meaning_upright": "Energy, passion, adventure, impulsiveness",
+    "meaning_reversed": "Haste, scattered energy, delays",
+    "love_meaning": "Passionate but short-lived romance",
+    "career_meaning": "Quick action, travel for career"
+  },
+  {
+    "id": "minor_wands_34_queen_of_wands",
+    "name": "Queen of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "34",
+    "upright_keywords": [
+      "Confidence",
+      "determination",
+      "joy",
+      "vibrancy"
+    ],
+    "reversed_keywords": [
+      "Selfishness",
+      "jealousy",
+      "demanding"
+    ],
+    "meaning_upright": "Confidence, determination, joy, vibrancy",
+    "meaning_reversed": "Selfishness, jealousy, demanding",
+    "love_meaning": "Charismatic partner, warm love",
+    "career_meaning": "Leadership, confident business woman"
+  },
+  {
+    "id": "minor_wands_35_king_of_wands",
+    "name": "King of Wands",
+    "arcana": "minor",
+    "suit": "wands",
+    "number": "35",
+    "upright_keywords": [
+      "Leadership",
+      "vision",
+      "entrepreneur",
+      "honor"
+    ],
+    "reversed_keywords": [
+      "Impulsiveness",
+      "overbearing",
+      "vicious"
+    ],
+    "meaning_upright": "Leadership, vision, entrepreneur, honor",
+    "meaning_reversed": "Impulsiveness, overbearing, vicious",
+    "love_meaning": "Bold romantic gestures, passionate partner",
+    "career_meaning": "Business leader, bold decisions"
+  },
+  {
+    "id": "minor_cups_36_ace_of_cups",
     "name": "Ace of Cups",
     "arcana": "minor",
     "suit": "cups",
-    "number": "ace",
-    "upright_keywords": ["emotional renewal", "love", "openness"],
-    "reversed_keywords": ["emotional blockage", "withholding", "numbness"],
-    "meaning_upright": "A new emotional chapter; openness, connection, and compassion.",
-    "meaning_reversed": "Feelings are present but held back; give yourself safe space to feel."
+    "number": "36",
+    "upright_keywords": [
+      "New love",
+      "emotional beginning",
+      "compassion"
+    ],
+    "reversed_keywords": [
+      "Emotional loss",
+      "blocked feelings",
+      "emptiness"
+    ],
+    "meaning_upright": "New love, emotional beginning, compassion",
+    "meaning_reversed": "Emotional loss, blocked feelings, emptiness",
+    "love_meaning": "New relationship, deep emotional connection",
+    "career_meaning": "Creative fulfillment, emotional satisfaction"
   },
   {
-    "id": "minor_cups_two",
+    "id": "minor_cups_37_two_of_cups",
     "name": "Two of Cups",
     "arcana": "minor",
     "suit": "cups",
-    "number": "2",
-    "upright_keywords": ["partnership", "mutuality", "alignment"],
-    "reversed_keywords": ["imbalance", "miscommunication", "disharmony"],
-    "meaning_upright": "Mutual support and shared values; a balanced partnership.",
-    "meaning_reversed": "A mismatch of expectations; clarify boundaries and needs."
+    "number": "37",
+    "upright_keywords": [
+      "Partnership",
+      "mutual attraction",
+      "unity"
+    ],
+    "reversed_keywords": [
+      "Breakup",
+      "imbalance",
+      "disharmony"
+    ],
+    "meaning_upright": "Partnership, mutual attraction, unity",
+    "meaning_reversed": "Breakup, imbalance, disharmony",
+    "love_meaning": "Mutual love, equal partnership",
+    "career_meaning": "Business partnership, collaboration"
   },
   {
-    "id": "minor_swords_three",
+    "id": "minor_cups_38_three_of_cups",
+    "name": "Three of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "38",
+    "upright_keywords": [
+      "Celebration",
+      "friendship",
+      "joy",
+      "community"
+    ],
+    "reversed_keywords": [
+      "Overindulgence",
+      "gossip",
+      "isolation"
+    ],
+    "meaning_upright": "Celebration, friendship, joy, community",
+    "meaning_reversed": "Overindulgence, gossip, isolation",
+    "love_meaning": "Social love, friends becoming lovers",
+    "career_meaning": "Team celebration, networking success"
+  },
+  {
+    "id": "minor_cups_39_four_of_cups",
+    "name": "Four of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "39",
+    "upright_keywords": [
+      "Apathy",
+      "contemplation",
+      "missed opportunities"
+    ],
+    "reversed_keywords": [
+      "Awareness",
+      "acceptance",
+      "motivation returning"
+    ],
+    "meaning_upright": "Apathy, contemplation, missed opportunities",
+    "meaning_reversed": "Awareness, acceptance, motivation returning",
+    "love_meaning": "Taking love for granted, emotional boredom",
+    "career_meaning": "Disengagement, overlooking opportunity"
+  },
+  {
+    "id": "minor_cups_40_five_of_cups",
+    "name": "Five of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "40",
+    "upright_keywords": [
+      "Loss",
+      "grief",
+      "regret",
+      "disappointment"
+    ],
+    "reversed_keywords": [
+      "Acceptance",
+      "moving on",
+      "finding peace"
+    ],
+    "meaning_upright": "Loss, grief, regret, disappointment",
+    "meaning_reversed": "Acceptance, moving on, finding peace",
+    "love_meaning": "Heartbreak, mourning lost love",
+    "career_meaning": "Career disappointment, focusing on loss"
+  },
+  {
+    "id": "minor_cups_41_six_of_cups",
+    "name": "Six of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "41",
+    "upright_keywords": [
+      "Nostalgia",
+      "childhood",
+      "innocence",
+      "reunion"
+    ],
+    "reversed_keywords": [
+      "Moving forward",
+      "leaving the past"
+    ],
+    "meaning_upright": "Nostalgia, childhood, innocence, reunion",
+    "meaning_reversed": "Moving forward, leaving the past",
+    "love_meaning": "Reconnecting with ex, childhood sweetheart",
+    "career_meaning": "Past career returning, nostalgia"
+  },
+  {
+    "id": "minor_cups_42_seven_of_cups",
+    "name": "Seven of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "42",
+    "upright_keywords": [
+      "Fantasy",
+      "illusion",
+      "choices",
+      "wishful thinking"
+    ],
+    "reversed_keywords": [
+      "Clarity",
+      "focus",
+      "making a decision"
+    ],
+    "meaning_upright": "Fantasy, illusion, choices, wishful thinking",
+    "meaning_reversed": "Clarity, focus, making a decision",
+    "love_meaning": "Unrealistic expectations in love",
+    "career_meaning": "Too many options, need to focus"
+  },
+  {
+    "id": "minor_cups_43_eight_of_cups",
+    "name": "Eight of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "43",
+    "upright_keywords": [
+      "Walking away",
+      "searching for meaning",
+      "withdrawal"
+    ],
+    "reversed_keywords": [
+      "Fear of change",
+      "stagnation",
+      "clinging"
+    ],
+    "meaning_upright": "Walking away, searching for meaning, withdrawal",
+    "meaning_reversed": "Fear of change, stagnation, clinging",
+    "love_meaning": "Leaving unfulfilling relationship",
+    "career_meaning": "Quitting job to find purpose"
+  },
+  {
+    "id": "minor_cups_44_nine_of_cups",
+    "name": "Nine of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "44",
+    "upright_keywords": [
+      "Wish fulfillment",
+      "satisfaction",
+      "contentment"
+    ],
+    "reversed_keywords": [
+      "Dissatisfaction",
+      "greed",
+      "unfulfillment"
+    ],
+    "meaning_upright": "Wish fulfillment, satisfaction, contentment",
+    "meaning_reversed": "Dissatisfaction, greed, unfulfillment",
+    "love_meaning": "Relationship wishes coming true",
+    "career_meaning": "Career satisfaction, goals achieved"
+  },
+  {
+    "id": "minor_cups_45_ten_of_cups",
+    "name": "Ten of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "45",
+    "upright_keywords": [
+      "Happiness",
+      "harmony",
+      "family",
+      "emotional fulfillment"
+    ],
+    "reversed_keywords": [
+      "Broken home",
+      "disharmony",
+      "misalignment"
+    ],
+    "meaning_upright": "Happiness, harmony, family, emotional fulfillment",
+    "meaning_reversed": "Broken home, disharmony, misalignment",
+    "love_meaning": "Happy marriage, family bliss",
+    "career_meaning": "Dream career, work-life harmony"
+  },
+  {
+    "id": "minor_cups_46_page_of_cups",
+    "name": "Page of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "46",
+    "upright_keywords": [
+      "Creative message",
+      "intuition",
+      "inner child"
+    ],
+    "reversed_keywords": [
+      "Emotional immaturity",
+      "creative block"
+    ],
+    "meaning_upright": "Creative message, intuition, inner child",
+    "meaning_reversed": "Emotional immaturity, creative block",
+    "love_meaning": "Sweet romantic gesture, new love message",
+    "career_meaning": "Creative opportunity, artistic pursuit"
+  },
+  {
+    "id": "minor_cups_47_knight_of_cups",
+    "name": "Knight of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "47",
+    "upright_keywords": [
+      "Romance",
+      "charm",
+      "imagination",
+      "beauty"
+    ],
+    "reversed_keywords": [
+      "Moodiness",
+      "unrealistic",
+      "jealousy"
+    ],
+    "meaning_upright": "Romance, charm, imagination, beauty",
+    "meaning_reversed": "Moodiness, unrealistic, jealousy",
+    "love_meaning": "Romantic proposal, charming partner",
+    "career_meaning": "Following creative passion, artistic career"
+  },
+  {
+    "id": "minor_cups_48_queen_of_cups",
+    "name": "Queen of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "48",
+    "upright_keywords": [
+      "Compassion",
+      "calm",
+      "intuitive",
+      "nurturing"
+    ],
+    "reversed_keywords": [
+      "Insecurity",
+      "co-dependency",
+      "emotional manipulation"
+    ],
+    "meaning_upright": "Compassion, calm, intuitive, nurturing",
+    "meaning_reversed": "Insecurity, co-dependency, emotional manipulation",
+    "love_meaning": "Deeply caring partner, empathic love",
+    "career_meaning": "Counseling career, emotional intelligence"
+  },
+  {
+    "id": "minor_cups_49_king_of_cups",
+    "name": "King of Cups",
+    "arcana": "minor",
+    "suit": "cups",
+    "number": "49",
+    "upright_keywords": [
+      "Emotional balance",
+      "diplomacy",
+      "calm authority"
+    ],
+    "reversed_keywords": [
+      "Emotional manipulation",
+      "moodiness"
+    ],
+    "meaning_upright": "Emotional balance, diplomacy, calm authority",
+    "meaning_reversed": "Emotional manipulation, moodiness",
+    "love_meaning": "Wise loving partner, emotional maturity",
+    "career_meaning": "Leadership through empathy, diplomacy"
+  },
+  {
+    "id": "minor_swords_50_ace_of_swords",
+    "name": "Ace of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "50",
+    "upright_keywords": [
+      "Clarity",
+      "breakthrough",
+      "truth",
+      "new idea"
+    ],
+    "reversed_keywords": [
+      "Confusion",
+      "chaos",
+      "lack of clarity"
+    ],
+    "meaning_upright": "Clarity, breakthrough, truth, new idea",
+    "meaning_reversed": "Confusion, chaos, lack of clarity",
+    "love_meaning": "Clear communication in love",
+    "career_meaning": "Breakthrough idea, mental clarity"
+  },
+  {
+    "id": "minor_swords_51_two_of_swords",
+    "name": "Two of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "51",
+    "upright_keywords": [
+      "Indecision",
+      "stalemate",
+      "blocked emotions"
+    ],
+    "reversed_keywords": [
+      "Information overload",
+      "overwhelm",
+      "clarity coming"
+    ],
+    "meaning_upright": "Indecision, stalemate, blocked emotions",
+    "meaning_reversed": "Information overload, overwhelm, clarity coming",
+    "love_meaning": "Relationship crossroads, avoiding truth",
+    "career_meaning": "Career decision paralysis"
+  },
+  {
+    "id": "minor_swords_52_three_of_swords",
     "name": "Three of Swords",
     "arcana": "minor",
     "suit": "swords",
-    "number": "3",
-    "upright_keywords": ["truth", "heartbreak", "clarity"],
-    "reversed_keywords": ["healing", "avoidance", "release"],
-    "meaning_upright": "Painful clarity; acknowledging a truth that hurts is the first step to healing.",
-    "meaning_reversed": "Recovery and release; allow grief to move through you rather than staying stuck."
+    "number": "52",
+    "upright_keywords": [
+      "Heartbreak",
+      "sorrow",
+      "grief",
+      "painful truth"
+    ],
+    "reversed_keywords": [
+      "Recovery",
+      "healing",
+      "forgiveness"
+    ],
+    "meaning_upright": "Heartbreak, sorrow, grief, painful truth",
+    "meaning_reversed": "Recovery, healing, forgiveness",
+    "love_meaning": "Breakup, betrayal, emotional pain",
+    "career_meaning": "Job loss, painful professional truth"
+  },
+  {
+    "id": "minor_swords_53_four_of_swords",
+    "name": "Four of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "53",
+    "upright_keywords": [
+      "Rest",
+      "recovery",
+      "contemplation",
+      "restoration"
+    ],
+    "reversed_keywords": [
+      "Restlessness",
+      "burnout",
+      "lack of rest"
+    ],
+    "meaning_upright": "Rest, recovery, contemplation, restoration",
+    "meaning_reversed": "Restlessness, burnout, lack of rest",
+    "love_meaning": "Relationship pause, time to reflect",
+    "career_meaning": "Vacation needed, recovery from stress"
+  },
+  {
+    "id": "minor_swords_54_five_of_swords",
+    "name": "Five of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "54",
+    "upright_keywords": [
+      "Conflict",
+      "defeat",
+      "win at all costs",
+      "betrayal"
+    ],
+    "reversed_keywords": [
+      "Reconciliation",
+      "forgiveness",
+      "moving on"
+    ],
+    "meaning_upright": "Conflict, defeat, win at all costs, betrayal",
+    "meaning_reversed": "Reconciliation, forgiveness, moving on",
+    "love_meaning": "Arguments, power struggles in love",
+    "career_meaning": "Office politics, unfair competition"
+  },
+  {
+    "id": "minor_swords_55_six_of_swords",
+    "name": "Six of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "55",
+    "upright_keywords": [
+      "Transition",
+      "moving on",
+      "recovery",
+      "travel"
+    ],
+    "reversed_keywords": [
+      "Stagnation",
+      "resistance",
+      "unfinished business"
+    ],
+    "meaning_upright": "Transition, moving on, recovery, travel",
+    "meaning_reversed": "Stagnation, resistance, unfinished business",
+    "love_meaning": "Moving on from heartbreak",
+    "career_meaning": "Career transition, relocation"
+  },
+  {
+    "id": "minor_swords_56_seven_of_swords",
+    "name": "Seven of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "56",
+    "upright_keywords": [
+      "Deception",
+      "strategy",
+      "stealth",
+      "cunning"
+    ],
+    "reversed_keywords": [
+      "Coming clean",
+      "confession",
+      "conscience"
+    ],
+    "meaning_upright": "Deception, strategy, stealth, cunning",
+    "meaning_reversed": "Coming clean, confession, conscience",
+    "love_meaning": "Dishonesty in relationship, secrets",
+    "career_meaning": "Underhanded work tactics, be careful"
+  },
+  {
+    "id": "minor_swords_57_eight_of_swords",
+    "name": "Eight of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "57",
+    "upright_keywords": [
+      "Restriction",
+      "trapped",
+      "self-limiting beliefs"
+    ],
+    "reversed_keywords": [
+      "Freedom",
+      "release",
+      "new perspective"
+    ],
+    "meaning_upright": "Restriction, trapped, self-limiting beliefs",
+    "meaning_reversed": "Freedom, release, new perspective",
+    "love_meaning": "Feeling trapped in relationship",
+    "career_meaning": "Feeling stuck in career, self-imposed limits"
+  },
+  {
+    "id": "minor_swords_58_nine_of_swords",
+    "name": "Nine of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "58",
+    "upright_keywords": [
+      "Anxiety",
+      "worry",
+      "nightmares",
+      "fear"
+    ],
+    "reversed_keywords": [
+      "Hope",
+      "recovery",
+      "reaching out for help"
+    ],
+    "meaning_upright": "Anxiety, worry, nightmares, fear",
+    "meaning_reversed": "Hope, recovery, reaching out for help",
+    "love_meaning": "Relationship anxiety, overthinking",
+    "career_meaning": "Work stress, insomnia from career worry"
+  },
+  {
+    "id": "minor_swords_59_ten_of_swords",
+    "name": "Ten of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "59",
+    "upright_keywords": [
+      "Endings",
+      "betrayal",
+      "rock bottom",
+      "crisis"
+    ],
+    "reversed_keywords": [
+      "Recovery",
+      "regeneration",
+      "rising up"
+    ],
+    "meaning_upright": "Endings, betrayal, rock bottom, crisis",
+    "meaning_reversed": "Recovery, regeneration, rising up",
+    "love_meaning": "Painful breakup, hitting rock bottom",
+    "career_meaning": "Career collapse, time to rebuild"
+  },
+  {
+    "id": "minor_swords_60_page_of_swords",
+    "name": "Page of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "60",
+    "upright_keywords": [
+      "Curiosity",
+      "restlessness",
+      "mental energy"
+    ],
+    "reversed_keywords": [
+      "Deception",
+      "manipulation",
+      "all talk"
+    ],
+    "meaning_upright": "Curiosity, restlessness, mental energy",
+    "meaning_reversed": "Deception, manipulation, all talk",
+    "love_meaning": "Curious about love, overthinking feelings",
+    "career_meaning": "New ideas, research, mental exploration"
+  },
+  {
+    "id": "minor_swords_61_knight_of_swords",
+    "name": "Knight of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "61",
+    "upright_keywords": [
+      "Ambition",
+      "action",
+      "impulsiveness",
+      "fast thinking"
+    ],
+    "reversed_keywords": [
+      "No direction",
+      "disregard",
+      "aggression"
+    ],
+    "meaning_upright": "Ambition, action, impulsiveness, fast thinking",
+    "meaning_reversed": "No direction, disregard, aggression",
+    "love_meaning": "Rushing into love, intense pursuit",
+    "career_meaning": "Aggressive career moves, quick action"
+  },
+  {
+    "id": "minor_swords_62_queen_of_swords",
+    "name": "Queen of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "62",
+    "upright_keywords": [
+      "Independence",
+      "clear boundaries",
+      "direct communication"
+    ],
+    "reversed_keywords": [
+      "Cold",
+      "cruel",
+      "bitterness"
+    ],
+    "meaning_upright": "Independence, clear boundaries, direct communication",
+    "meaning_reversed": "Cold, cruel, bitterness",
+    "love_meaning": "Independent partner, honest communication",
+    "career_meaning": "Clear leadership, objective decisions"
+  },
+  {
+    "id": "minor_swords_63_king_of_swords",
+    "name": "King of Swords",
+    "arcana": "minor",
+    "suit": "swords",
+    "number": "63",
+    "upright_keywords": [
+      "Intellectual power",
+      "authority",
+      "truth",
+      "ethics"
+    ],
+    "reversed_keywords": [
+      "Manipulation",
+      "tyranny",
+      "abuse of power"
+    ],
+    "meaning_upright": "Intellectual power, authority, truth, ethics",
+    "meaning_reversed": "Manipulation, tyranny, abuse of power",
+    "love_meaning": "Logical partner, clear communication",
+    "career_meaning": "Authority figure, legal expertise"
+  },
+  {
+    "id": "minor_pentacles_64_ace_of_pentacles",
+    "name": "Ace of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "64",
+    "upright_keywords": [
+      "New opportunity",
+      "prosperity",
+      "abundance"
+    ],
+    "reversed_keywords": [
+      "Missed opportunity",
+      "scarcity",
+      "instability"
+    ],
+    "meaning_upright": "New opportunity, prosperity, abundance",
+    "meaning_reversed": "Missed opportunity, scarcity, instability",
+    "love_meaning": "New stable relationship beginning",
+    "career_meaning": "New job, financial opportunity"
+  },
+  {
+    "id": "minor_pentacles_65_two_of_pentacles",
+    "name": "Two of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "65",
+    "upright_keywords": [
+      "Balance",
+      "adaptability",
+      "juggling priorities"
+    ],
+    "reversed_keywords": [
+      "Imbalance",
+      "disorganization",
+      "overwhelm"
+    ],
+    "meaning_upright": "Balance, adaptability, juggling priorities",
+    "meaning_reversed": "Imbalance, disorganization, overwhelm",
+    "love_meaning": "Balancing love and life, juggling priorities",
+    "career_meaning": "Work-life balance, managing multiple projects"
+  },
+  {
+    "id": "minor_pentacles_66_three_of_pentacles",
+    "name": "Three of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "66",
+    "upright_keywords": [
+      "Teamwork",
+      "collaboration",
+      "skill",
+      "craftsmanship"
+    ],
+    "reversed_keywords": [
+      "Lack of teamwork",
+      "disorganization",
+      "conflict"
+    ],
+    "meaning_upright": "Teamwork, collaboration, skill, craftsmanship",
+    "meaning_reversed": "Lack of teamwork, disorganization, conflict",
+    "love_meaning": "Building relationship together, shared goals",
+    "career_meaning": "Team project, skill recognition"
+  },
+  {
+    "id": "minor_pentacles_67_four_of_pentacles",
+    "name": "Four of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "67",
+    "upright_keywords": [
+      "Security",
+      "control",
+      "conservation",
+      "stability"
+    ],
+    "reversed_keywords": [
+      "Greed",
+      "materialism",
+      "self-protection"
+    ],
+    "meaning_upright": "Security, control, conservation, stability",
+    "meaning_reversed": "Greed, materialism, self-protection",
+    "love_meaning": "Possessiveness, fear of vulnerability",
+    "career_meaning": "Financial security, holding onto resources"
+  },
+  {
+    "id": "minor_pentacles_68_five_of_pentacles",
+    "name": "Five of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "68",
+    "upright_keywords": [
+      "Hardship",
+      "loss",
+      "isolation",
+      "feeling left out"
+    ],
+    "reversed_keywords": [
+      "Recovery",
+      "improvement",
+      "turning corner"
+    ],
+    "meaning_upright": "Hardship, loss, isolation, feeling left out",
+    "meaning_reversed": "Recovery, improvement, turning corner",
+    "love_meaning": "Loneliness, feeling rejected in love",
+    "career_meaning": "Financial hardship, job loss"
+  },
+  {
+    "id": "minor_pentacles_69_six_of_pentacles",
+    "name": "Six of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "69",
+    "upright_keywords": [
+      "Generosity",
+      "charity",
+      "sharing wealth",
+      "balance"
+    ],
+    "reversed_keywords": [
+      "Debt",
+      "selfishness",
+      "strings attached"
+    ],
+    "meaning_upright": "Generosity, charity, sharing wealth, balance",
+    "meaning_reversed": "Debt, selfishness, strings attached",
+    "love_meaning": "Generous partner, giving and receiving love",
+    "career_meaning": "Raise, bonus, charitable giving"
+  },
+  {
+    "id": "minor_pentacles_70_seven_of_pentacles",
+    "name": "Seven of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "70",
+    "upright_keywords": [
+      "Patience",
+      "long-term view",
+      "investment",
+      "perseverance"
+    ],
+    "reversed_keywords": [
+      "Impatience",
+      "lack of reward",
+      "wasted effort"
+    ],
+    "meaning_upright": "Patience, long-term view, investment, perseverance",
+    "meaning_reversed": "Impatience, lack of reward, wasted effort",
+    "love_meaning": "Patience in love, long-term investment",
+    "career_meaning": "Career growth takes time, be patient"
+  },
+  {
+    "id": "minor_pentacles_71_eight_of_pentacles",
+    "name": "Eight of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "71",
+    "upright_keywords": [
+      "Craftsmanship",
+      "skill development",
+      "diligence"
+    ],
+    "reversed_keywords": [
+      "Perfectionism",
+      "lack of ambition",
+      "mediocrity"
+    ],
+    "meaning_upright": "Craftsmanship, skill development, diligence",
+    "meaning_reversed": "Perfectionism, lack of ambition, mediocrity",
+    "love_meaning": "Working on relationship, improving together",
+    "career_meaning": "Skill building, apprenticeship, hard work"
+  },
+  {
+    "id": "minor_pentacles_72_nine_of_pentacles",
+    "name": "Nine of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "72",
+    "upright_keywords": [
+      "Abundance",
+      "luxury",
+      "self-sufficiency",
+      "independence"
+    ],
+    "reversed_keywords": [
+      "Over-investment in work",
+      "superficiality"
+    ],
+    "meaning_upright": "Abundance, luxury, self-sufficiency, independence",
+    "meaning_reversed": "Over-investment in work, superficiality",
+    "love_meaning": "Enjoying being single, self-love",
+    "career_meaning": "Financial independence, enjoying success"
+  },
+  {
+    "id": "minor_pentacles_73_ten_of_pentacles",
+    "name": "Ten of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "73",
+    "upright_keywords": [
+      "Wealth",
+      "legacy",
+      "family",
+      "inheritance",
+      "establishment"
+    ],
+    "reversed_keywords": [
+      "Financial failure",
+      "family disputes"
+    ],
+    "meaning_upright": "Wealth, legacy, family, inheritance, establishment",
+    "meaning_reversed": "Financial failure, family disputes",
+    "love_meaning": "Long-lasting love, family wealth",
+    "career_meaning": "Financial success, family business"
+  },
+  {
+    "id": "minor_pentacles_74_page_of_pentacles",
+    "name": "Page of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "74",
+    "upright_keywords": [
+      "Ambition",
+      "studiousness",
+      "new financial opportunity"
+    ],
+    "reversed_keywords": [
+      "Lack of progress",
+      "procrastination"
+    ],
+    "meaning_upright": "Ambition, studiousness, new financial opportunity",
+    "meaning_reversed": "Lack of progress, procrastination",
+    "love_meaning": "Steady new romance, building foundations",
+    "career_meaning": "Scholarship, new job, study opportunity"
+  },
+  {
+    "id": "minor_pentacles_75_knight_of_pentacles",
+    "name": "Knight of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "75",
+    "upright_keywords": [
+      "Reliability",
+      "hard work",
+      "routine",
+      "patience"
+    ],
+    "reversed_keywords": [
+      "Boredom",
+      "laziness",
+      "feeling stuck"
+    ],
+    "meaning_upright": "Reliability, hard work, routine, patience",
+    "meaning_reversed": "Boredom, laziness, feeling stuck",
+    "love_meaning": "Loyal steady partner, slow romance",
+    "career_meaning": "Reliable worker, methodical approach"
+  },
+  {
+    "id": "minor_pentacles_76_queen_of_pentacles",
+    "name": "Queen of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "76",
+    "upright_keywords": [
+      "Nurturing",
+      "practical",
+      "financial security",
+      "homebody"
+    ],
+    "reversed_keywords": [
+      "Neglect",
+      "smothering",
+      "work-home imbalance"
+    ],
+    "meaning_upright": "Nurturing, practical, financial security, homebody",
+    "meaning_reversed": "Neglect, smothering, work-home imbalance",
+    "love_meaning": "Caring partner, domestic happiness",
+    "career_meaning": "Successful businesswoman, practical leader"
+  },
+  {
+    "id": "minor_pentacles_77_king_of_pentacles",
+    "name": "King of Pentacles",
+    "arcana": "minor",
+    "suit": "pentacles",
+    "number": "77",
+    "upright_keywords": [
+      "Wealth",
+      "business",
+      "leadership",
+      "security",
+      "discipline"
+    ],
+    "reversed_keywords": [
+      "Greed",
+      "indulgence",
+      "materialism"
+    ],
+    "meaning_upright": "Wealth, business, leadership, security, discipline",
+    "meaning_reversed": "Greed, indulgence, materialism",
+    "love_meaning": "Stable provider, secure relationship",
+    "career_meaning": "Business success, financial mastery"
   }
 ]
