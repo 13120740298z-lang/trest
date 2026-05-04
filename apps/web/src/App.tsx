@@ -25,7 +25,7 @@ type AnalyzeResponse = {
 }
 
 function App() {
-  const apiBase = useMemo(() => import.meta.env.VITE_API_BASE ?? 'http://localhost:8000', [])
+  const apiBase = useMemo(() => import.meta.env.VITE_API_BASE ?? '', [])
 
   const [name, setName] = useState('User')
   const [birthDate, setBirthDate] = useState('1990-01-01')
@@ -150,7 +150,7 @@ function App() {
               <button type="submit" disabled={loading}>
                 {loading ? '生成中...' : '生成报告'}
               </button>
-              <span className="hint">API：{apiBase}</span>
+              <span className="hint">API：{apiBase || '(通过前端代理)'}</span>
             </div>
           </form>
 
