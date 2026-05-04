@@ -5,6 +5,38 @@ from typing import Any, Literal
 from pydantic import BaseModel, Field
 
 
+class AstrologyCommonParams(BaseModel):
+    local_datetime: str | None = None
+    utc_datetime: str | None = None
+    city: str | None = None
+    nation: str | None = None
+    lat: float | None = None
+    lon: float | None = None
+    timezone: str | None = None
+    zodiac_type: str | None = None
+    houses_system_name: str | None = None
+    perspective_type: str | None = None
+
+
+class AstrologyPoint(BaseModel):
+    key: str
+    name: str | None = None
+    sign: str | None = None
+    emoji: str | None = None
+    element: str | None = None
+    quality: str | None = None
+    house: str | None = None
+    house_num: int | None = None
+    retrograde: bool | None = None
+    position: float | None = None
+
+
+class AstrologyStats(BaseModel):
+    element_counts: dict[str, int] = Field(default_factory=dict)
+    quality_counts: dict[str, int] = Field(default_factory=dict)
+    yin_yang_counts: dict[str, int] = Field(default_factory=dict)
+
+
 class SpreadConfig(BaseModel):
     type: Literal["single", "three"] = "single"
     include_reversed: bool = True
@@ -49,6 +81,9 @@ class ReportProfile(BaseModel):
 class ReportAstrology(BaseModel):
     raw_chart: dict[str, Any]
     highlights: list[str] = Field(default_factory=list)
+    common_params: AstrologyCommonParams = Field(default_factory=AstrologyCommonParams)
+    points: list[AstrologyPoint] = Field(default_factory=list)
+    stats: AstrologyStats = Field(default_factory=AstrologyStats)
     interpretation: list[ReportSection] = Field(default_factory=list)
 
 

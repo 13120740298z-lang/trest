@@ -6,7 +6,39 @@ type SpreadType = 'single' | 'three'
 type AnalyzeResponse = {
   schema_version: string
   profile: { summary: string; traits: string[]; strengths: string[]; blind_spots: string[] }
-  astrology: { highlights: string[]; interpretation: { title: string; content: string }[] }
+  astrology: {
+    highlights: string[]
+    common_params: {
+      local_datetime?: string | null
+      utc_datetime?: string | null
+      city?: string | null
+      nation?: string | null
+      lat?: number | null
+      lon?: number | null
+      timezone?: string | null
+      zodiac_type?: string | null
+      houses_system_name?: string | null
+      perspective_type?: string | null
+    }
+    points: {
+      key: string
+      name?: string | null
+      sign?: string | null
+      emoji?: string | null
+      element?: string | null
+      quality?: string | null
+      house?: string | null
+      house_num?: number | null
+      retrograde?: boolean | null
+      position?: number | null
+    }[]
+    stats: {
+      element_counts: Record<string, number>
+      quality_counts: Record<string, number>
+      yin_yang_counts: Record<string, number>
+    }
+    interpretation: { title: string; content: string }[]
+  }
   tarot: {
     spread: { type: SpreadType; include_reversed: boolean; seed: number | null }
     cards: {
@@ -27,6 +59,7 @@ type AnalyzeResponse = {
 function App() {
   const apiBase = useMemo(() => import.meta.env.VITE_API_BASE ?? '', [])
 
+  const [tab, setTab] = useState<'report' | 'params' | 'stats'>('report')
   const [name, setName] = useState('User')
   const [birthDate, setBirthDate] = useState('1990-01-01')
   const [birthTime, setBirthTime] = useState('12:00')
@@ -46,6 +79,7 @@ function App() {
     setLoading(true)
     setError(null)
     setResult(null)
+    setTab('report')
 
     try {
       const resp = await fetch(`${apiBase}/api/analyze`, {
@@ -175,85 +209,232 @@ function App() {
 
           {result ? (
             <div className="report">
-              <section className="block">
-                <h3>核心画像</h3>
-                <p>{result.profile.summary}</p>
-                <div className="chips">
-                  {result.profile.traits.map((t) => (
-                    <span key={t} className="chip">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </section>
+              <div className="tabs">
+                <button
+                  type="button"
+                  className={tab === 'report' ? 'tab active' : 'tab'}
+                  onClick={() => setTab('report')}
+                >
+                  解读报告
+                </button>
+                <button
+                  type="button"
+                  className={tab === 'params' ? 'tab active' : 'tab'}
+                  onClick={() => setTab('params')}
+                >
+                  常用参数
+                </button>
+                <button
+                  type="button"
+                  className={tab === 'stats' ? 'tab active' : 'tab'}
+                  onClick={() => setTab('stats')}
+                >
+                  属性统计
+                </button>
+              </div>
 
-              <section className="block">
-                <h3>星盘要点</h3>
-                <ul>
-                  {result.astrology.highlights.map((h) => (
-                    <li key={h}>{h}</li>
-                  ))}
-                </ul>
-                {result.astrology.interpretation.map((s) => (
-                  <div key={s.title} className="section">
-                    <h4>{s.title}</h4>
-                    <p>{s.content}</p>
-                  </div>
-                ))}
-              </section>
-
-              <section className="block">
-                <h3>塔罗</h3>
-                <div className="cards">
-                  {result.tarot.cards.map((c) => (
-                    <div key={c.id} className="tarotCard">
-                      <div className="tarotTitle">
-                        {c.name}
-                        <span className="badge">{c.orientation === 'upright' ? '正位' : '逆位'}</span>
-                      </div>
-                      <div className="tarotMeaning">{c.meaning}</div>
-                      <div className="tarotMeta">
-                        牌义来源：
-                        {c.meaning_source === 'love' ? '爱情' : c.meaning_source === 'career' ? '事业' : '通用'}
-                      </div>
-                      {c.keywords.length ? <div className="tarotKw">{c.keywords.join(' / ')}</div> : null}
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {result.mbti ? (
+              {tab === 'params' ? (
                 <section className="block">
-                  <h3>MBTI</h3>
-                  <div className="chips">
-                    <span className="chip">{result.mbti.type}</span>
+                  <h3>主盘信息</h3>
+                  <div className="tableWrap">
+                    <table className="table">
+                      <tbody>
+                        <tr>
+                          <th>本地时间</th>
+                          <td>{result.astrology.common_params.local_datetime ?? '-'}</td>
+                        </tr>
+                        <tr>
+                          <th>UTC</th>
+                          <td>{result.astrology.common_params.utc_datetime ?? '-'}</td>
+                        </tr>
+                        <tr>
+                          <th>地点</th>
+                          <td>
+                            {(result.astrology.common_params.city ?? '-') +
+                              (result.astrology.common_params.nation ? ` / ${result.astrology.common_params.nation}` : '')}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>经纬度</th>
+                          <td>
+                            {result.astrology.common_params.lat ?? '-'} / {result.astrology.common_params.lon ?? '-'}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>时区</th>
+                          <td>{result.astrology.common_params.timezone ?? '-'}</td>
+                        </tr>
+                        <tr>
+                          <th>黄道系统</th>
+                          <td>{result.astrology.common_params.zodiac_type ?? '-'}</td>
+                        </tr>
+                        <tr>
+                          <th>宫位系统</th>
+                          <td>{result.astrology.common_params.houses_system_name ?? '-'}</td>
+                        </tr>
+                        <tr>
+                          <th>中心制</th>
+                          <td>{result.astrology.common_params.perspective_type ?? '-'}</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  {result.mbti.interpretation.map((s) => (
-                    <div key={s.title} className="section">
-                      <h4>{s.title}</h4>
-                      <p style={{ whiteSpace: 'pre-wrap' }}>{s.content}</p>
-                    </div>
-                  ))}
+
+                  <h3 style={{ marginTop: 16 }}>行星与角点</h3>
+                  <div className="tableWrap">
+                    <table className="table">
+                      <thead>
+                        <tr>
+                          <th>点</th>
+                          <th>星座</th>
+                          <th>元素</th>
+                          <th>模式</th>
+                          <th>宫位</th>
+                          <th>逆行</th>
+                          <th>度数</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {result.astrology.points.map((p) => (
+                          <tr key={p.key}>
+                            <td>{p.name ?? p.key}</td>
+                            <td>
+                              {p.sign ?? '-'} {p.emoji ?? ''}
+                            </td>
+                            <td>{p.element ?? '-'}</td>
+                            <td>{p.quality ?? '-'}</td>
+                            <td>{p.house_num ?? '-'}</td>
+                            <td>{p.retrograde ? '是' : '否'}</td>
+                            <td>{typeof p.position === 'number' ? p.position.toFixed(2) : '-'}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </section>
               ) : null}
 
-              <section className="block">
-                <h3>行动指南</h3>
-                <ol>
-                  {result.action_guide.map((a) => (
-                    <li key={a}>{a}</li>
-                  ))}
-                </ol>
-              </section>
+              {tab === 'stats' ? (
+                <section className="block">
+                  <h3>元素统计</h3>
+                  <div className="statGrid">
+                    {Object.entries(result.astrology.stats.element_counts).map(([k, v]) => (
+                      <div key={k} className="stat">
+                        <div className="statK">{k}</div>
+                        <div className="statV">{v}</div>
+                      </div>
+                    ))}
+                  </div>
 
-              <section className="block">
-                <h3>继续追问</h3>
-                <ul>
-                  {result.followup_questions.map((q) => (
-                    <li key={q}>{q}</li>
-                  ))}
-                </ul>
-              </section>
+                  <h3 style={{ marginTop: 16 }}>模式统计</h3>
+                  <div className="statGrid">
+                    {Object.entries(result.astrology.stats.quality_counts).map(([k, v]) => (
+                      <div key={k} className="stat">
+                        <div className="statK">{k}</div>
+                        <div className="statV">{v}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <h3 style={{ marginTop: 16 }}>阴阳统计</h3>
+                  <div className="statGrid">
+                    {Object.entries(result.astrology.stats.yin_yang_counts).map(([k, v]) => (
+                      <div key={k} className="stat">
+                        <div className="statK">{k}</div>
+                        <div className="statV">{v}</div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
+
+              {tab === 'report' ? (
+                <>
+                  <section className="block">
+                    <h3>核心画像</h3>
+                    <p>{result.profile.summary}</p>
+                    <div className="chips">
+                      {result.profile.traits.map((t) => (
+                        <span key={t} className="chip">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </section>
+
+                  <section className="block">
+                    <h3>星盘要点</h3>
+                    <ul>
+                      {result.astrology.highlights.map((h) => (
+                        <li key={h}>{h}</li>
+                      ))}
+                    </ul>
+                    {result.astrology.interpretation.map((s) => (
+                      <div key={s.title} className="section">
+                        <h4>{s.title}</h4>
+                        <p>{s.content}</p>
+                      </div>
+                    ))}
+                  </section>
+
+                  <section className="block">
+                    <h3>塔罗</h3>
+                    <div className="cards">
+                      {result.tarot.cards.map((c) => (
+                        <div key={c.id} className="tarotCard">
+                          <div className="tarotTitle">
+                            {c.name}
+                            <span className="badge">{c.orientation === 'upright' ? '正位' : '逆位'}</span>
+                          </div>
+                          <div className="tarotMeaning">{c.meaning}</div>
+                          <div className="tarotMeta">
+                            牌义来源：
+                            {c.meaning_source === 'love'
+                              ? '爱情'
+                              : c.meaning_source === 'career'
+                                ? '事业'
+                                : '通用'}
+                          </div>
+                          {c.keywords.length ? <div className="tarotKw">{c.keywords.join(' / ')}</div> : null}
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  {result.mbti ? (
+                    <section className="block">
+                      <h3>MBTI</h3>
+                      <div className="chips">
+                        <span className="chip">{result.mbti.type}</span>
+                      </div>
+                      {result.mbti.interpretation.map((s) => (
+                        <div key={s.title} className="section">
+                          <h4>{s.title}</h4>
+                          <p style={{ whiteSpace: 'pre-wrap' }}>{s.content}</p>
+                        </div>
+                      ))}
+                    </section>
+                  ) : null}
+
+                  <section className="block">
+                    <h3>行动指南</h3>
+                    <ol>
+                      {result.action_guide.map((a) => (
+                        <li key={a}>{a}</li>
+                      ))}
+                    </ol>
+                  </section>
+
+                  <section className="block">
+                    <h3>继续追问</h3>
+                    <ul>
+                      {result.followup_questions.map((q) => (
+                        <li key={q}>{q}</li>
+                      ))}
+                    </ul>
+                  </section>
+                </>
+              ) : null}
             </div>
           ) : null}
         </section>

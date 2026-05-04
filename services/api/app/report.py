@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from .models import ReportAstrology, ReportMbti, ReportProfile, ReportSection, ReportTarot, TarotCard
+from .models import AstrologyCommonParams, AstrologyPoint, AstrologyStats, ReportAstrology, ReportMbti, ReportProfile, ReportSection, ReportTarot, TarotCard
 from .mbti_assets import load_mbti_assets
 
 
@@ -52,6 +52,100 @@ def build_astrology(*, chart: dict, highlights: list[str]) -> ReportAstrology:
     moon = chart.get("moon", {})
     asc = chart.get("ascendant", {})
 
+    common = AstrologyCommonParams(
+        local_datetime=chart.get("iso_formatted_local_datetime"),
+        utc_datetime=chart.get("iso_formatted_utc_datetime"),
+        city=chart.get("city"),
+        nation=chart.get("nation"),
+        lat=chart.get("lat"),
+        lon=chart.get("lng"),
+        timezone=chart.get("tz_str"),
+        zodiac_type=chart.get("zodiac_type"),
+        houses_system_name=chart.get("houses_system_name"),
+        perspective_type=chart.get("perspective_type"),
+    )
+
+    def house_num(v: str | None) -> int | None:
+        if not v or not isinstance(v, str):
+            return None
+        if v.endswith("_House"):
+            prefix = v.removesuffix("_House")
+            mapping = {
+                "First": 1,
+                "Second": 2,
+                "Third": 3,
+                "Fourth": 4,
+                "Fifth": 5,
+                "Sixth": 6,
+                "Seventh": 7,
+                "Eighth": 8,
+                "Ninth": 9,
+                "Tenth": 10,
+                "Eleventh": 11,
+                "Twelfth": 12,
+            }
+            return mapping.get(prefix)
+        return None
+
+    point_keys = [
+        "sun",
+        "moon",
+        "mercury",
+        "venus",
+        "mars",
+        "jupiter",
+        "saturn",
+        "uranus",
+        "neptune",
+        "pluto",
+        "ascendant",
+        "medium_coeli",
+        "descendant",
+        "imum_coeli",
+    ]
+    points: list[AstrologyPoint] = []
+    for key in point_keys:
+        p = chart.get(key)
+        if not isinstance(p, dict):
+            continue
+        points.append(
+            AstrologyPoint(
+                key=key,
+                name=p.get("name"),
+                sign=p.get("sign"),
+                emoji=p.get("emoji"),
+                element=p.get("element"),
+                quality=p.get("quality"),
+                house=p.get("house"),
+                house_num=house_num(p.get("house")),
+                retrograde=p.get("retrograde"),
+                position=p.get("position"),
+            )
+        )
+
+    def _count(values: list[str]) -> dict[str, int]:
+        out: dict[str, int] = {}
+        for v in values:
+            out[v] = out.get(v, 0) + 1
+        return out
+
+    element_vals = [p.element for p in points if p.element]
+    quality_vals = [p.quality for p in points if p.quality]
+
+    yin = 0
+    yang = 0
+    for e in element_vals:
+        if e in ("Fire", "Air"):
+            yang += 1
+        elif e in ("Earth", "Water"):
+            yin += 1
+
+    stats = AstrologyStats(
+        element_counts=_count(element_vals),
+        quality_counts=_count(quality_vals),
+        yin_yang_counts={"yin": yin, "yang": yang},
+    )
+
     sections = [
         ReportSection(
             title="关键落点",
@@ -69,7 +163,14 @@ def build_astrology(*, chart: dict, highlights: list[str]) -> ReportAstrology:
         ),
     ]
 
-    return ReportAstrology(raw_chart=chart, highlights=highlights, interpretation=sections)
+    return ReportAstrology(
+        raw_chart=chart,
+        highlights=highlights,
+        common_params=common,
+        points=points,
+        stats=stats,
+        interpretation=sections,
+    )
 
 
 def build_tarot(*, spread, cards: list[TarotCard], domain: str | None) -> ReportTarot:
